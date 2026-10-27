@@ -1,0 +1,41 @@
+{
+  "selected": "lstm_a",
+  "params": {
+    "hidden": 32,
+    "layers": 1,
+    "dropout": 0.1,
+    "lr": 0.001,
+    "weight_decay": 1e-05,
+    "batch_size": 64,
+    "max_epochs": 300,
+    "patience": 20
+  },
+  "seq_len": 30,
+  "features": [
+    "ret_1",
+    "ret_3",
+    "ret_7",
+    "ret_14",
+    "rsi_14",
+    "macd_rel",
+    "macd_signal_rel",
+    "macd_hist_rel",
+    "close_over_sma7",
+    "sma7_over_sma30",
+    "sma14_over_sma30",
+    "bb_pctb",
+    "bb_bandwidth",
+    "volatility_7",
+    "volatility_14",
+    "volatility_30",
+    "log_volume_rel_7",
+    "log_volume_rel_30",
+    "volume_ma_ratio",
+    "Volume_Zero_Flag",
+    "hl_range_rel",
+    "close_pos_in_range"
+  ],
+  "target": "Log_Return_Next",
+  "target_mean": 0.0008368799028872851,
+  "target_std": 0.03944064340463256
+}

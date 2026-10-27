@@ -1,0 +1,54 @@
+{
+  "source_file": "coin_Bitcoin .csv",
+  "source_sha256": "56c83f986e2fddaef7f157da1d8f345999686144e5e2b27e1560abd9fe714da3",
+  "rows_raw": 2991,
+  "rows_clean": 2960,
+  "features": [
+    "Close_Lag_1",
+    "Close_Lag_2",
+    "Close_Lag_3",
+    "Close_Lag_7",
+    "Close_Lag_14",
+    "Daily_Return",
+    "MA_7",
+    "MA_14",
+    "MA_30",
+    "Volatility_7",
+    "Volatility_14",
+    "Volatility_30",
+    "Volume_Lag_1",
+    "Volume_Lag_7",
+    "High_Low_Range",
+    "Volume_Zero_Flag"
+  ],
+  "target": "Target_Close_Next",
+  "excluded_columns": [
+    "SNo",
+    "Name",
+    "Symbol",
+    "Date"
+  ],
+  "notes": [
+    "All features are causal (use only data available on/ before prediction date).",
+    "Target_Close_Next = Close of the following day (row d -> Close of d+1).",
+    "Zero-volume days (242, all 2013) are flagged via Volume_Zero_Flag; no imputation.",
+    "Splits are chronological and non-overlapping; test period reserved for later evaluation."
+  ],
+  "splits": {
+    "train": {
+      "rows": 2072,
+      "start": "2013-05-29",
+      "end": "2019-01-29"
+    },
+    "val": {
+      "rows": 444,
+      "start": "2019-01-30",
+      "end": "2020-04-17"
+    },
+    "test": {
+      "rows": 444,
+      "start": "2020-04-18",
+      "end": "2021-07-05"
+    }
+  }
+}

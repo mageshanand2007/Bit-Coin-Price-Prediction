@@ -1,0 +1,69 @@
+{
+  "phase": "5B",
+  "evaluation_type": "historical_test",
+  "historical_note": "Dataset ends 2021-07-06. The historical test period was already examined in Phases 4/5A, so this is NOT an independent final test.",
+  "no_retraining": true,
+  "no_tuning_on_test": true,
+  "target": "Log_Return_Next",
+  "seq_len": 30,
+  "features": [
+    "ret_1",
+    "ret_3",
+    "ret_7",
+    "ret_14",
+    "rsi_14",
+    "macd_rel",
+    "macd_signal_rel",
+    "macd_hist_rel",
+    "close_over_sma7",
+    "sma7_over_sma30",
+    "sma14_over_sma30",
+    "bb_pctb",
+    "bb_bandwidth",
+    "volatility_7",
+    "volatility_14",
+    "volatility_30",
+    "log_volume_rel_7",
+    "log_volume_rel_30",
+    "volume_ma_ratio",
+    "Volume_Zero_Flag",
+    "hl_range_rel",
+    "close_pos_in_range"
+  ],
+  "test_sequences": 444,
+  "results": {
+    "persistence_baseline": {
+      "type": "baseline",
+      "metrics": {
+        "MAE": 813.4115849980857,
+        "RMSE": 1397.705636571466,
+        "R2": 0.9939207758324062,
+        "DirectionalAccuracy": 0.0
+      }
+    },
+    "lstm_v2_logreturn": {
+      "type": "model",
+      "metrics": {
+        "MAE": 817.8136012427208,
+        "RMSE": 1397.474588773741,
+        "R2": 0.9939227855191758,
+        "DirectionalAccuracy": 0.5157657657657657
+      },
+      "return_metrics": {
+        "MAE": 0.026923288438115877,
+        "RMSE": 0.03824458123102468,
+        "R2": 0.0056258404734422784,
+        "DirectionalAccuracy": 0.5157657657657657
+      }
+    }
+  },
+  "xgboost_v2_test_metrics": {
+    "MAE": 808.3143305470028,
+    "RMSE": 1387.993305322837,
+    "R2": 0.9940049685232728,
+    "DirectionalAccuracy": 0.49099099099099097
+  },
+  "lstm_beats_baseline": false,
+  "lstm_beats_xgboost_v2": false,
+  "test_used_for_tuning": false
+}

@@ -1,0 +1,147 @@
+{
+  "phase": 4,
+  "evaluation_type": "historical_test",
+  "historical_note": "Dataset ends 2021-07-06. These test metrics are a historical evaluation of saved models and are NOT indicative of current or future performance.",
+  "no_retraining": true,
+  "no_tuning_on_test": true,
+  "features": [
+    "Close_Lag_1",
+    "Close_Lag_2",
+    "Close_Lag_3",
+    "Close_Lag_7",
+    "Close_Lag_14",
+    "Daily_Return",
+    "MA_7",
+    "MA_14",
+    "MA_30",
+    "Volatility_7",
+    "Volatility_14",
+    "Volatility_30",
+    "Volume_Lag_1",
+    "Volume_Lag_7",
+    "High_Low_Range",
+    "Volume_Zero_Flag"
+  ],
+  "target": "Target_Close_Next",
+  "excluded_from_features": [
+    "Current_Close",
+    "Date",
+    "Name",
+    "SNo",
+    "Symbol",
+    "Target_Close_Next"
+  ],
+  "test_rows": 444,
+  "test_range": [
+    "2020-04-18",
+    "2021-07-05"
+  ],
+  "baseline_note": "Persistence baseline predicts next Close = current Close; directional accuracy ~0 because it always predicts 'no change'.",
+  "results": {
+    "persistence_baseline": {
+      "type": "baseline",
+      "metrics": {
+        "MAE": 813.4115849980857,
+        "RMSE": 1397.705636571466,
+        "R2": 0.9939207758324062,
+        "DirectionalAccuracy": 0.0
+      },
+      "predictions_finite": true,
+      "beats_baseline_mae": false
+    },
+    "linear_regression": {
+      "type": "model",
+      "metrics": {
+        "MAE": 1287.7491520258732,
+        "RMSE": 1924.8077583776405,
+        "R2": 0.988471005130123,
+        "DirectionalAccuracy": 0.4954954954954955
+      },
+      "predictions_finite": true,
+      "beats_baseline_mae": false
+    },
+    "random_forest": {
+      "type": "model",
+      "metrics": {
+        "MAE": 13713.711199975616,
+        "RMSE": 20996.073487724003,
+        "R2": -0.37180661647084423,
+        "DirectionalAccuracy": 0.527027027027027
+      },
+      "predictions_finite": true,
+      "beats_baseline_mae": false
+    },
+    "xgboost": {
+      "type": "model",
+      "metrics": {
+        "MAE": 13959.726823642763,
+        "RMSE": 21174.80622562877,
+        "R2": -0.3952615115092595,
+        "DirectionalAccuracy": 0.45045045045045046
+      },
+      "predictions_finite": true,
+      "beats_baseline_mae": false
+    },
+    "xgboost_shallow": {
+      "type": "model",
+      "metrics": {
+        "MAE": 13448.915038230085,
+        "RMSE": 20654.04508628369,
+        "R2": -0.32747688121450924,
+        "DirectionalAccuracy": 0.4594594594594595
+      },
+      "predictions_finite": true,
+      "beats_baseline_mae": false
+    }
+  },
+  "best_model_by_test_mae": "persistence_baseline",
+  "best_trained_model_by_test_mae": "linear_regression",
+  "any_trained_beats_baseline": false,
+  "val_vs_test": {
+    "persistence_baseline": {
+      "val_MAE": 205.4241407777928,
+      "test_MAE": 813.4115849980857,
+      "MAE_change_pct": 295.96689167995726,
+      "val_R2": 0.9772096965152715,
+      "test_R2": 0.9939207758324062,
+      "val_DirAcc": 0.0,
+      "test_DirAcc": 0.0
+    },
+    "linear_regression": {
+      "val_MAE": 375.5056309856709,
+      "test_MAE": 1287.7491520258732,
+      "MAE_change_pct": 242.93737450637937,
+      "val_R2": 0.9500753206010469,
+      "test_R2": 0.988471005130123,
+      "val_DirAcc": 0.47297297297297297,
+      "test_DirAcc": 0.4954954954954955
+    },
+    "random_forest": {
+      "val_MAE": 329.9518619793118,
+      "test_MAE": 13713.711199975616,
+      "MAE_change_pct": 4056.2763482254495,
+      "val_R2": 0.9438985528609168,
+      "test_R2": -0.37180661647084423,
+      "val_DirAcc": 0.49774774774774777,
+      "test_DirAcc": 0.527027027027027
+    },
+    "xgboost": {
+      "val_MAE": 370.5612506557587,
+      "test_MAE": 13959.726823642763,
+      "MAE_change_pct": 3667.184722887004,
+      "val_R2": 0.9405137398687345,
+      "test_R2": -0.3952615115092595,
+      "val_DirAcc": 0.509009009009009,
+      "test_DirAcc": 0.45045045045045046
+    },
+    "xgboost_shallow": {
+      "val_MAE": 381.8046254373212,
+      "test_MAE": 13448.915038230085,
+      "MAE_change_pct": 3422.459955225954,
+      "val_R2": 0.9470253364372032,
+      "test_R2": -0.32747688121450924,
+      "val_DirAcc": 0.5180180180180181,
+      "test_DirAcc": 0.4594594594594595
+    }
+  }
+}

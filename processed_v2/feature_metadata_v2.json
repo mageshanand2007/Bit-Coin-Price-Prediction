@@ -1,0 +1,63 @@
+{
+  "phase": "5A",
+  "source_file": "coin_Bitcoin .csv",
+  "source_sha256": "56c83f986e2fddaef7f157da1d8f345999686144e5e2b27e1560abd9fe714da3",
+  "rows_raw": 2991,
+  "rows_clean": 2748,
+  "features": [
+    "ret_1",
+    "ret_3",
+    "ret_7",
+    "ret_14",
+    "rsi_14",
+    "macd_rel",
+    "macd_signal_rel",
+    "macd_hist_rel",
+    "close_over_sma7",
+    "sma7_over_sma30",
+    "sma14_over_sma30",
+    "bb_pctb",
+    "bb_bandwidth",
+    "volatility_7",
+    "volatility_14",
+    "volatility_30",
+    "log_volume_rel_7",
+    "log_volume_rel_30",
+    "volume_ma_ratio",
+    "Volume_Zero_Flag",
+    "hl_range_rel",
+    "close_pos_in_range"
+  ],
+  "target": "Log_Return_Next",
+  "target_definition": "log(Close[t+1] / Close[t]); convert via Close[t]*exp(pred)",
+  "helper_columns": [
+    "Close",
+    "Close_Next"
+  ],
+  "excluded_from_features": [
+    "SNo",
+    "Name",
+    "Symbol",
+    "Symbol",
+    "Date",
+    "Log_Return_Next",
+    "Close",
+    "Close_Next"
+  ],
+  "split_boundaries": {
+    "train_end": "2019-01-29",
+    "val_start": "2019-01-30",
+    "val_end": "2020-04-17",
+    "test_start": "2020-04-18"
+  },
+  "split_rows": {
+    "train": 1860,
+    "val": 444,
+    "test": 444
+  },
+  "notes": [
+    "All indicators are causal (use only data up to the prediction day).",
+    "Features are relative/stationary to avoid price-level extrapolation.",
+    "Volume zero days (2013) flagged via Volume_Zero_Flag; no imputation."
+  ]
+}

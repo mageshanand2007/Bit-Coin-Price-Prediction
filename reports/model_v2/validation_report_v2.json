@@ -1,0 +1,215 @@
+{
+  "phase": "5A",
+  "target": "Log_Return_Next",
+  "target_definition": "log(Close[t+1] / Close[t]); convert via Close[t]*exp(pred)",
+  "features": [
+    "ret_1",
+    "ret_3",
+    "ret_7",
+    "ret_14",
+    "rsi_14",
+    "macd_rel",
+    "macd_signal_rel",
+    "macd_hist_rel",
+    "close_over_sma7",
+    "sma7_over_sma30",
+    "sma14_over_sma30",
+    "bb_pctb",
+    "bb_bandwidth",
+    "volatility_7",
+    "volatility_14",
+    "volatility_30",
+    "log_volume_rel_7",
+    "log_volume_rel_30",
+    "volume_ma_ratio",
+    "Volume_Zero_Flag",
+    "hl_range_rel",
+    "close_pos_in_range"
+  ],
+  "excluded_from_features": [
+    "Close",
+    "Close_Next",
+    "Date",
+    "Log_Return_Next",
+    "Name",
+    "SNo",
+    "Symbol"
+  ],
+  "train_rows": 1860,
+  "val_rows": 444,
+  "test_used": false,
+  "train_range": [
+    "2013-12-27",
+    "2019-01-29"
+  ],
+  "val_range": [
+    "2019-01-30",
+    "2020-04-17"
+  ],
+  "selection_metric": "val price MAE",
+  "selected_model": "xgb_v2_b",
+  "best_by_val_mae": "persistence_baseline",
+  "results": {
+    "persistence_baseline": {
+      "type": "baseline",
+      "params": {},
+      "metrics": {
+        "MAE": 205.4241407777928,
+        "RMSE": 344.77081550601974,
+        "R2": 0.9772096965152715,
+        "DirectionalAccuracy": 0.0
+      },
+      "return_metrics": {
+        "MAE": 0.02517555152703349,
+        "RMSE": 0.0426159514208415,
+        "R2": -0.0015039997238326386,
+        "DirectionalAccuracy": 0.0
+      }
+    },
+    "xgb_v2_a": {
+      "type": "model",
+      "params": {
+        "n_estimators": 400,
+        "learning_rate": 0.03,
+        "max_depth": 3,
+        "subsample": 0.8,
+        "colsample_bytree": 0.8,
+        "reg_lambda": 1.0,
+        "min_child_weight": 5
+      },
+      "metrics": {
+        "MAE": 211.33761660636725,
+        "RMSE": 346.56790217317877,
+        "R2": 0.9769714925328009,
+        "DirectionalAccuracy": 0.5292792792792793
+      },
+      "return_metrics": {
+        "MAE": 0.025983749095180097,
+        "RMSE": 0.04279469888268443,
+        "R2": -0.009922994166847054,
+        "DirectionalAccuracy": 0.5292792792792793
+      },
+      "importances": {
+        "ret_1": 0.05343048647046089,
+        "ret_3": 0.05197959020733833,
+        "ret_7": 0.047000739723443985,
+        "ret_14": 0.04344191029667854,
+        "rsi_14": 0.048711590468883514,
+        "macd_rel": 0.04962781444191933,
+        "macd_signal_rel": 0.04984726011753082,
+        "macd_hist_rel": 0.0518430694937706,
+        "close_over_sma7": 0.060666512697935104,
+        "sma7_over_sma30": 0.05019723251461983,
+        "sma14_over_sma30": 0.04373680055141449,
+        "bb_pctb": 0.04573947563767433,
+        "bb_bandwidth": 0.04691888391971588,
+        "volatility_7": 0.04344051331281662,
+        "volatility_14": 0.041152119636535645,
+        "volatility_30": 0.04292910173535347,
+        "log_volume_rel_7": 0.03928961977362633,
+        "log_volume_rel_30": 0.049083299934864044,
+        "volume_ma_ratio": 0.041393205523490906,
+        "Volume_Zero_Flag": 0.0,
+        "hl_range_rel": 0.05589379742741585,
+        "close_pos_in_range": 0.0436769500374794
+      }
+    },
+    "xgb_v2_b": {
+      "type": "model",
+      "params": {
+        "n_estimators": 600,
+        "learning_rate": 0.02,
+        "max_depth": 2,
+        "subsample": 0.8,
+        "colsample_bytree": 0.8,
+        "reg_lambda": 2.0,
+        "min_child_weight": 3
+      },
+      "metrics": {
+        "MAE": 207.53766525489362,
+        "RMSE": 343.83274906580016,
+        "R2": 0.9773335453662868,
+        "DirectionalAccuracy": 0.5518018018018018
+      },
+      "return_metrics": {
+        "MAE": 0.025441534462264784,
+        "RMSE": 0.04234558078756726,
+        "R2": 0.01116347845544563,
+        "DirectionalAccuracy": 0.5518018018018018
+      },
+      "importances": {
+        "ret_1": 0.061504803597927094,
+        "ret_3": 0.054216399788856506,
+        "ret_7": 0.043691232800483704,
+        "ret_14": 0.042166080325841904,
+        "rsi_14": 0.045721761882305145,
+        "macd_rel": 0.049366842955350876,
+        "macd_signal_rel": 0.049191705882549286,
+        "macd_hist_rel": 0.049558378756046295,
+        "close_over_sma7": 0.0581093430519104,
+        "sma7_over_sma30": 0.0457603894174099,
+        "sma14_over_sma30": 0.04308893904089928,
+        "bb_pctb": 0.04857708513736725,
+        "bb_bandwidth": 0.044737040996551514,
+        "volatility_7": 0.046782396733760834,
+        "volatility_14": 0.046929024159908295,
+        "volatility_30": 0.043765995651483536,
+        "log_volume_rel_7": 0.03776734694838524,
+        "log_volume_rel_30": 0.04307463392615318,
+        "volume_ma_ratio": 0.04835836589336395,
+        "Volume_Zero_Flag": 0.0,
+        "hl_range_rel": 0.0530027337372303,
+        "close_pos_in_range": 0.044629503041505814
+      }
+    },
+    "xgb_v2_c": {
+      "type": "model",
+      "params": {
+        "n_estimators": 300,
+        "learning_rate": 0.05,
+        "max_depth": 4,
+        "subsample": 0.9,
+        "colsample_bytree": 0.9,
+        "reg_lambda": 1.0,
+        "min_child_weight": 5
+      },
+      "metrics": {
+        "MAE": 217.75849862372348,
+        "RMSE": 354.02183001290945,
+        "R2": 0.9759702528168729,
+        "DirectionalAccuracy": 0.5
+      },
+      "return_metrics": {
+        "MAE": 0.026723269648279167,
+        "RMSE": 0.04327998291725926,
+        "R2": -0.032957544582082665,
+        "DirectionalAccuracy": 0.5
+      },
+      "importances": {
+        "ret_1": 0.055500488728284836,
+        "ret_3": 0.04897980019450188,
+        "ret_7": 0.04506978392601013,
+        "ret_14": 0.04597444459795952,
+        "rsi_14": 0.04711300507187843,
+        "macd_rel": 0.050574157387018204,
+        "macd_signal_rel": 0.05098634213209152,
+        "macd_hist_rel": 0.05078411102294922,
+        "close_over_sma7": 0.06124630197882652,
+        "sma7_over_sma30": 0.04901434853672981,
+        "sma14_over_sma30": 0.04570320248603821,
+        "bb_pctb": 0.04511032626032829,
+        "bb_bandwidth": 0.041758909821510315,
+        "volatility_7": 0.04395734891295433,
+        "volatility_14": 0.04397926479578018,
+        "volatility_30": 0.044698476791381836,
+        "log_volume_rel_7": 0.0429319329559803,
+        "log_volume_rel_30": 0.042763371020555496,
+        "volume_ma_ratio": 0.04097207263112068,
+        "Volume_Zero_Flag": 0.0,
+        "hl_range_rel": 0.05734245851635933,
+        "close_pos_in_range": 0.04553990066051483
+      }
+    }
+  },
+  "saved_model": "models_v2\\xgboost_v2_logreturn.joblib"
+}

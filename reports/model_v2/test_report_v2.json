@@ -1,0 +1,71 @@
+{
+  "phase": "5A",
+  "evaluation_type": "historical_test",
+  "historical_note": "Dataset ends 2021-07-06. Historical evaluation only; not indicative of current or future performance.",
+  "no_retraining": true,
+  "no_tuning_on_test": true,
+  "target": "Log_Return_Next",
+  "features": [
+    "ret_1",
+    "ret_3",
+    "ret_7",
+    "ret_14",
+    "rsi_14",
+    "macd_rel",
+    "macd_signal_rel",
+    "macd_hist_rel",
+    "close_over_sma7",
+    "sma7_over_sma30",
+    "sma14_over_sma30",
+    "bb_pctb",
+    "bb_bandwidth",
+    "volatility_7",
+    "volatility_14",
+    "volatility_30",
+    "log_volume_rel_7",
+    "log_volume_rel_30",
+    "volume_ma_ratio",
+    "Volume_Zero_Flag",
+    "hl_range_rel",
+    "close_pos_in_range"
+  ],
+  "test_rows": 444,
+  "test_range": [
+    "2020-04-18",
+    "2021-07-05"
+  ],
+  "results": {
+    "persistence_baseline": {
+      "type": "baseline",
+      "metrics": {
+        "MAE": 813.4115849980857,
+        "RMSE": 1397.705636571466,
+        "R2": 0.9939207758324062,
+        "DirectionalAccuracy": 0.0
+      }
+    },
+    "xgboost_v2_logreturn": {
+      "type": "model",
+      "metrics": {
+        "MAE": 808.3143305470028,
+        "RMSE": 1387.993305322837,
+        "R2": 0.9940049685232728,
+        "DirectionalAccuracy": 0.49099099099099097
+      },
+      "return_metrics": {
+        "MAE": 0.026904197900839557,
+        "RMSE": 0.03814163162111827,
+        "R2": 0.010972095778649549,
+        "DirectionalAccuracy": 0.49099099099099097
+      }
+    }
+  },
+  "beats_baseline_on_test_mae": true,
+  "val_vs_test": {
+    "selected_model": "xgb_v2_b",
+    "val_MAE": 207.53766525489362,
+    "test_MAE": 808.3143305470028,
+    "val_DirAcc": 0.5518018018018018,
+    "test_DirAcc": 0.49099099099099097
+  }
+}

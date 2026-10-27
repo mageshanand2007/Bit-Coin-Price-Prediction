@@ -1,0 +1,82 @@
+{
+  "phase": "5B",
+  "target": "Log_Return_Next",
+  "seq_len": 30,
+  "features": [
+    "ret_1",
+    "ret_3",
+    "ret_7",
+    "ret_14",
+    "rsi_14",
+    "macd_rel",
+    "macd_signal_rel",
+    "macd_hist_rel",
+    "close_over_sma7",
+    "sma7_over_sma30",
+    "sma14_over_sma30",
+    "bb_pctb",
+    "bb_bandwidth",
+    "volatility_7",
+    "volatility_14",
+    "volatility_30",
+    "log_volume_rel_7",
+    "log_volume_rel_30",
+    "volume_ma_ratio",
+    "Volume_Zero_Flag",
+    "hl_range_rel",
+    "close_pos_in_range"
+  ],
+  "selection_metric": "val price MAE",
+  "selected_model": "lstm_a",
+  "baseline_val": {
+    "MAE": 205.4241407777928,
+    "RMSE": 344.77081550601974,
+    "R2": 0.9772096965152715,
+    "DirectionalAccuracy": 0.0
+  },
+  "results": {
+    "lstm_a": {
+      "params": {
+        "hidden": 32,
+        "layers": 1,
+        "dropout": 0.1,
+        "lr": 0.001,
+        "weight_decay": 1e-05,
+        "batch_size": 64,
+        "max_epochs": 300,
+        "patience": 20
+      },
+      "epochs_run": 27,
+      "best_val_loss": 1.1546844244003296,
+      "metrics": {
+        "MAE": 205.13695938077495,
+        "RMSE": 344.17864902061467,
+        "R2": 0.9772879169647649,
+        "DirectionalAccuracy": 0.5180180180180181
+      }
+    },
+    "lstm_b": {
+      "params": {
+        "hidden": 64,
+        "layers": 1,
+        "dropout": 0.2,
+        "lr": 0.0005,
+        "weight_decay": 0.0001,
+        "batch_size": 64,
+        "max_epochs": 300,
+        "patience": 20
+      },
+      "epochs_run": 32,
+      "best_val_loss": 1.1460645198822021,
+      "metrics": {
+        "MAE": 205.85612059715638,
+        "RMSE": 342.71798879981463,
+        "R2": 0.9774802835823581,
+        "DirectionalAccuracy": 0.5292792792792793
+      }
+    }
+  },
+  "test_used_for_tuning": false,
+  "train_sequences": 1831,
+  "val_sequences": 444
+}
